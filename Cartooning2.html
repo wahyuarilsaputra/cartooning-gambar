@@ -395,11 +395,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gambar">Load Gambar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-batas-tepian">Membuat Batas Tepian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-color-pallete">Reduce Color Pallete</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-noise">Reduce noise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartooning">Cartooning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gambar">Load Gambar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-load-gambar">Fungsi Load Gambar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-gambar">Menampilkan Gambar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-batas-tepian">Membuat Batas Tepian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-batas-tepian">Fungsi Batas Tepian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-batas-tepian">Menampilkan hasil Batas Tepian</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-warna-pallete">Mengurangi Warna Pallete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-warna-pallete">Fungsi Warna Pallete</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-pengurangan-warna-palette">Menampilkan hasil pengurangan warna palette</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-noise">Mengurangi noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-pengurangan-noise-pada-gambar">Fungsi Pengurangan Noise pada gambar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartooning-gambar">Cartooning Gambar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-cartooning-gmbar">Fungsi Cartooning Gmbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-gambar-cartooning">Menampilkan gambar cartooning</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -424,6 +443,8 @@ document.write(`
 </div>
 <section id="load-gambar">
 <h2>Load Gambar<a class="headerlink" href="#load-gambar" title="Permalink to this heading">#</a></h2>
+<section id="fungsi-load-gambar">
+<h3>Fungsi Load Gambar<a class="headerlink" href="#fungsi-load-gambar" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -436,6 +457,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="menampilkan-gambar">
+<h3>Menampilkan Gambar<a class="headerlink" href="#menampilkan-gambar" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/DeepLearning/Cartooning/tugas/karapan_sapi.jpg&quot;</span>
@@ -448,8 +472,11 @@ document.write(`
 </div>
 </div>
 </section>
+</section>
 <section id="membuat-batas-tepian">
 <h2>Membuat Batas Tepian<a class="headerlink" href="#membuat-batas-tepian" title="Permalink to this heading">#</a></h2>
+<section id="fungsi-batas-tepian">
+<h3>Fungsi Batas Tepian<a class="headerlink" href="#fungsi-batas-tepian" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">edge_mask</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">line_size</span><span class="p">,</span><span class="n">blur_value</span><span class="p">):</span>
@@ -461,6 +488,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="menampilkan-hasil-batas-tepian">
+<h3>Menampilkan hasil Batas Tepian<a class="headerlink" href="#menampilkan-hasil-batas-tepian" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_size</span> <span class="o">=</span> <span class="mi">11</span>
@@ -477,8 +507,11 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="reduce-color-pallete">
-<h2>Reduce Color Pallete<a class="headerlink" href="#reduce-color-pallete" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="mengurangi-warna-pallete">
+<h2>Mengurangi Warna Pallete<a class="headerlink" href="#mengurangi-warna-pallete" title="Permalink to this heading">#</a></h2>
+<section id="fungsi-warna-pallete">
+<h3>Fungsi Warna Pallete<a class="headerlink" href="#fungsi-warna-pallete" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">color_quantization</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
@@ -494,6 +527,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="menampilkan-hasil-pengurangan-warna-palette">
+<h3>Menampilkan hasil pengurangan warna palette<a class="headerlink" href="#menampilkan-hasil-pengurangan-warna-palette" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_quantization</span> <span class="o">=</span> <span class="n">color_quantization</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -504,8 +540,11 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="reduce-noise">
-<h2>Reduce noise<a class="headerlink" href="#reduce-noise" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="mengurangi-noise">
+<h2>Mengurangi noise<a class="headerlink" href="#mengurangi-noise" title="Permalink to this heading">#</a></h2>
+<section id="fungsi-pengurangan-noise-pada-gambar">
+<h3>Fungsi Pengurangan Noise pada gambar<a class="headerlink" href="#fungsi-pengurangan-noise-pada-gambar" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blurred</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img_quantization</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">sigmaColor</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">sigmaSpace</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
@@ -519,8 +558,11 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="cartooning">
-<h2>Cartooning<a class="headerlink" href="#cartooning" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="cartooning-gambar">
+<h2>Cartooning Gambar<a class="headerlink" href="#cartooning-gambar" title="Permalink to this heading">#</a></h2>
+<section id="fungsi-cartooning-gmbar">
+<h3>Fungsi Cartooning Gmbar<a class="headerlink" href="#fungsi-cartooning-gmbar" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cartoon</span><span class="p">():</span>
@@ -530,6 +572,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="menampilkan-gambar-cartooning">
+<h3>Menampilkan gambar cartooning<a class="headerlink" href="#menampilkan-gambar-cartooning" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_cartoon</span> <span class="o">=</span> <span class="n">cartoon</span><span class="p">()</span>
@@ -543,6 +588,7 @@ document.write(`
 <img alt="_images/71126c6ad624d2abe137d3bf264302efcc5a0188e925b1148e7449472880a5ee.png" src="_images/71126c6ad624d2abe137d3bf264302efcc5a0188e925b1148e7449472880a5ee.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -600,11 +646,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gambar">Load Gambar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-batas-tepian">Membuat Batas Tepian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-color-pallete">Reduce Color Pallete</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-noise">Reduce noise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartooning">Cartooning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gambar">Load Gambar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-load-gambar">Fungsi Load Gambar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-gambar">Menampilkan Gambar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-batas-tepian">Membuat Batas Tepian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-batas-tepian">Fungsi Batas Tepian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-batas-tepian">Menampilkan hasil Batas Tepian</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-warna-pallete">Mengurangi Warna Pallete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-warna-pallete">Fungsi Warna Pallete</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-pengurangan-warna-palette">Menampilkan hasil pengurangan warna palette</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-noise">Mengurangi noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-pengurangan-noise-pada-gambar">Fungsi Pengurangan Noise pada gambar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartooning-gambar">Cartooning Gambar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-cartooning-gmbar">Fungsi Cartooning Gmbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-gambar-cartooning">Menampilkan gambar cartooning</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
