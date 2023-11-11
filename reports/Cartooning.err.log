@@ -1,0 +1,100 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+class Cartoonizer:
+  def __init__(self):
+    pass
+
+  def render(self, img_rgb):
+    img_rgb = cv2.imread(img_rgb) # membaca gambar
+    img_rgb = cv2.resize(img_rgb, (1366,768)) # mengubah ukuran menjadi 1366x768 pixel (mengurangi resolusi gambar)
+    numDownSamples = 2 # jumlah penurunan resolusi gambar
+    numBilateralFilters = 50 # jumlah proses filter bilateral (mengurangi detail gambar)
+
+    # -- LANGKAH 1 --
+
+    # Downsample image dengan piramida Gaussian
+    img_color = img_rgb  # variabel untuk gambar yang telah disederhanakan
+
+    # Proses DownSample
+    for _ in range(numDownSamples):
+      img_color = cv2.pyrDown(img_color) # mengurangi ukuran gambar ke setengahnya dalam setiap dimensi (lebar dan tinggi)
+
+    # Proses Filter Bilateral
+    for _ in range(numBilateralFilters):
+      img_color = cv2.bilateralFilter(img_color, 9, 9, 7) # pengaburan yang mempertahankan tepi dalam gambar sambil mengurangi noise
+      # gambar)
+      # Diameter daerah di sekitar tiap piksel yang digunakan
+      # Nilai yang mengontrol seberapa besar pengaruh piksel dari piksel dengan piksel yang sedang diproses
+      # Nilai yang mengontrol seberapa besar pengaruh piksel yang memiliki perbedaan intensitas warna dengan piksel yang sedang diproses
+
+    # UpSample ke ukuran asli
+    for _ in range(numDownSamples):
+      img_color = cv2.pyrUp(img_color) # memperbesar setiap piksel dan menambahkan piksel-piksel baru
+
+    # -- LANGKAH 2 --
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY) # konversi gambar berwarna menjadi gambar grayscale
+    img_blur = cv2.medianBlur(img_gray, 3) # blur gambar grayscale (menggantikan nilai piksel kernel dengan nilai median dari daerah kernel tersebut)
+
+    # -- LANGKAH 3 --
+    img_edge = cv2.adaptiveThreshold(img_blur, 255,
+        cv2.ADAPTIVE_THRESH_MEAN_C,
+        cv2.THRESH_BINARY, 9, 2) # menentukan treshold (batas dari rata-rata intensitas di sekitar setiap piksel (dengan kernel 9x9) dikurangi dengan konstanta 2.)
+
+    # -- LANGKAH 5 --
+    (x,y,z) = img_color.shape # tinggi, lebar, dan jumlah saluran warna dalam gambar.
+    img_edge = cv2.resize(img_edge,(y,x)) # resize ke ukuran asli gambar
+    img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2RGB) # Mengubah tepi menjadi berwarna
+    cv2.imwrite("edge.png",img_edge) # Simpan proses treshold image ke file gambar
+
+    return cv2.bitwise_and(img_color, img_edge) # operasi bitwise AND antara dua citra antar gambar asli dengan gambar treshold
+
+tmp_canvas = Cartoonizer()
+
+file_name = "/content/drive/MyDrive/DeepLearning/Cartooning/Tugas/karapan_sapi.jpg"
+res = tmp_canvas.render(file_name)
+
+cv2.imwrite("Cartoon version.jpg", res)
+
+# Menampilkan gambar hasil
+display(Image(filename='Cartoon version.jpg'))
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31merror[0m                                     Traceback (most recent call last)
+[0;32m<ipython-input-2-c76a8ad032f2>[0m in [0;36m<cell line: 52>[0;34m()[0m
+[1;32m     50[0m [0;34m[0m[0m
+[1;32m     51[0m [0mfile_name[0m [0;34m=[0m [0;34m"/content/drive/MyDrive/DeepLearning/Cartooning/Tugas/karapan_sapi.jpg"[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 52[0;31m [0mres[0m [0;34m=[0m [0mtmp_canvas[0m[0;34m.[0m[0mrender[0m[0;34m([0m[0mfile_name[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     53[0m [0;34m[0m[0m
+[1;32m     54[0m [0mcv2[0m[0;34m.[0m[0mimwrite[0m[0;34m([0m[0;34m"Cartoon version.jpg"[0m[0;34m,[0m [0mres[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<ipython-input-2-c76a8ad032f2>[0m in [0;36mrender[0;34m(self, img_rgb)[0m
+[1;32m      5[0m   [0;32mdef[0m [0mrender[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mimg_rgb[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m     [0mimg_rgb[0m [0;34m=[0m [0mcv2[0m[0;34m.[0m[0mimread[0m[0;34m([0m[0mimg_rgb[0m[0;34m)[0m [0;31m# membaca gambar[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m     [0mimg_rgb[0m [0;34m=[0m [0mcv2[0m[0;34m.[0m[0mresize[0m[0;34m([0m[0mimg_rgb[0m[0;34m,[0m [0;34m([0m[0;36m1366[0m[0;34m,[0m[0;36m768[0m[0;34m)[0m[0;34m)[0m [0;31m# mengubah ukuran menjadi 1366x768 pixel (mengurangi resolusi gambar)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m     [0mnumDownSamples[0m [0;34m=[0m [0;36m2[0m [0;31m# jumlah penurunan resolusi gambar[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m     [0mnumBilateralFilters[0m [0;34m=[0m [0;36m50[0m [0;31m# jumlah proses filter bilateral (mengurangi detail gambar)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31merror[0m: OpenCV(4.8.0) /io/opencv/modules/imgproc/src/resize.cpp:4062: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+
+
